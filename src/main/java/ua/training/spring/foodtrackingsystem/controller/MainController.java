@@ -12,12 +12,23 @@ public class MainController {
     @Autowired
     UserServiceRepo userServiceRepo;
 
-    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String index(User user) {
-        user.setLogin("login");
+       /* user.setLogin("login");
         user.setPassword("pass");
-userServiceRepo.save(user);
+userServiceRepo.save(user);*/
         return "login";
+    }
+
+    @RequestMapping(value = {"/home", "/"}, method = RequestMethod.GET)
+    public String viewHome() {
+
+        return "home";
+    }
+
+    @RequestMapping(value = {"/hello"}, method = RequestMethod.GET)
+    public String viewHello() {
+        return "hello";
     }
 
     @RequestMapping(value = {"/personList"}, method = RequestMethod.GET)
