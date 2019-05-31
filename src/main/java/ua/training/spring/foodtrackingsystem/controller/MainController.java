@@ -37,5 +37,11 @@ userServiceRepo.save(user);*/
         return "personList";
     }
 
+    @RequestMapping(value = {"/registration"}, method = RequestMethod.GET)
+    public String viewRegistration() {
+
+        return "registration";
+    }
+
 
 }
