@@ -3,7 +3,12 @@
 <#import 'parts/footer.ftl' as f>
 <#import "parts/login.ftl" as l>
 <@c.page>
-
+<#--<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>-->
 <h1>Login page!</h1>
 <@l.login "/login"/>
 

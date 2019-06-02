@@ -5,8 +5,8 @@
 <@c.page>
 
 <h1>Welcome!</h1>
-
-<p>Click <a href="@{/hello}">here</a> to see a greeting.</p>
+<p>Click <a href="${springMacroRequestContext.getContextPath()}/hello">here</a> to see a greeting.</p>
+<p><a href="/login">LOGIN</a></p>
 
     <@f.footer date="2019" project="Food Tracking System"/>
     <p>${f.pack}</p>

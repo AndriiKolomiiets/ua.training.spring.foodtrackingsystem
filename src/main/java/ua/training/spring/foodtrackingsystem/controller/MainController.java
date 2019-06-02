@@ -1,22 +1,21 @@
 package ua.training.spring.foodtrackingsystem.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import ua.training.spring.foodtrackingsystem.model.User;
-import ua.training.spring.foodtrackingsystem.model.UserServiceRepo;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
-    @Autowired
-    UserServiceRepo userServiceRepo;
 
-    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
-    public String index(User user) {
-       /* user.setLogin("login");
+
+   /* @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public String login(@RequestParam(value = "error", required = false) String error,
+                        @RequestParam(value = "logout", required = false) String logout,
+                        Model model, User user) {
+        model.addAttribute("error", error != null);
+        model.addAttribute("logout", logout != null);
+       *//* user.setLogin("login");
         user.setPassword("pass");
-userServiceRepo.save(user);*/
+userServiceRepo.save(user);*//*
         return "login";
     }
 
@@ -25,6 +24,7 @@ userServiceRepo.save(user);*/
 
         return "home";
     }
+
 
     @RequestMapping(value = {"/hello"}, method = RequestMethod.GET)
     public String viewHello() {
@@ -42,6 +42,30 @@ userServiceRepo.save(user);*/
 
         return "registration";
     }
+*/
 
+    @GetMapping(value = "/admin")
+    public String adminHome() {
+        return "admin";
+    }
 
+    @GetMapping(value = "/user")
+    public String userHome() {
+        return "user";
+    }
+
+    @GetMapping(value = "/hello")
+    public String hello() {
+        return "hello";
+    }
+
+    @GetMapping(value = "/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping(value = {"/", "/home"})
+    public String startPage() {
+        return "home";
+    }
 }

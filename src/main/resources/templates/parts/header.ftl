@@ -1,5 +1,6 @@
 //Menu + Language + LogOut
 
+<#--
 <#macro list title items>
   <p>${title?cap_first}:
   <ul>
@@ -8,4 +9,4 @@
     </#list>
   </ul>
 </#macro>
-<@list items=["mouse", "elephant", "python"] title="Animals"/>
+<@list items=["mouse", "elephant", "python"] title="Animals"/>-->
