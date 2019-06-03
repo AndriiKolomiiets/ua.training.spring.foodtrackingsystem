@@ -1,4 +1,4 @@
-package ua.training.spring.foodtrackingsystem.model;
+package ua.training.spring.foodtrackingsystem.model.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 

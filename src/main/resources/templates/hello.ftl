@@ -4,6 +4,7 @@
 <@c.page>
 
 <div>Welcome to Food Tracking System!</div>
+<div> Always happy to see you, ${username}</div>
 
     <@l.logout/>
 

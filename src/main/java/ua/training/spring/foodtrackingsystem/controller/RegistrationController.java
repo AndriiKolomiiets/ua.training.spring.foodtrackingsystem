@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ua.training.spring.foodtrackingsystem.model.Role;
-import ua.training.spring.foodtrackingsystem.model.User;
+import ua.training.spring.foodtrackingsystem.model.domain.Role;
+import ua.training.spring.foodtrackingsystem.model.domain.User;
 import ua.training.spring.foodtrackingsystem.model.services.UserService;
 
 import java.util.Collections;

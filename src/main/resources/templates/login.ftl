@@ -9,10 +9,14 @@
 <div th:if="${param.logout}">
     You have been logged out.
 </div>-->
+    <#if logout>
+                    <div class="alert alert-info" role="alert">You've been logged out successfully.</div>
+    </#if>
+    <#if error>
+                    <div class="alert alert-danger" role="alert">Invalid Username or Password!</div>
+    </#if>
 <h1>Login page!</h1>
 <@l.login "/login"/>
-
-<a href="/registration">Add new user</a>
 
     <@f.footer date="2019" project="Food Tracking System"/>
     <p>${f.pack}</p>

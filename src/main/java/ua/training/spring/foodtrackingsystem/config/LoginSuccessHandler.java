@@ -28,7 +28,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
         RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
-
+//todo: roles containing works strangely
     protected String determineTargetUrl(Authentication authentication) {
         String url = "/hello";
 
