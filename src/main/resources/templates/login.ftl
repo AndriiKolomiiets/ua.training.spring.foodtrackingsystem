@@ -18,6 +18,8 @@
 <h1>Login page!</h1>
 <@l.login "/login"/>
 
+<p>Click <a href="${springMacroRequestContext.getContextPath()}/registration">here</a> to register.</p>
+
     <@f.footer date="2019" project="Food Tracking System"/>
     <p>${f.pack}</p>
 </@c.page>

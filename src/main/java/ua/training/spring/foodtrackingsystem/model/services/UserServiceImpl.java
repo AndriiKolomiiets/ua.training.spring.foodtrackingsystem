@@ -1,15 +1,34 @@
 package ua.training.spring.foodtrackingsystem.model.services;
 
-import ua.training.spring.foodtrackingsystem.model.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.lang.NonNull;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import ua.training.spring.foodtrackingsystem.model.domain.Role;
+import ua.training.spring.foodtrackingsystem.model.domain.User;
 import ua.training.spring.foodtrackingsystem.model.repositories.UserRepository;
 
-@Component
-public class UserServiceImpl implements UserService {
+import java.util.Collections;
 
+@Service
+public class UserServiceImpl implements UserDetailsService, UserService {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserService userService;
+
+    @Override
+    public UserDetails loadUserByUsername(@NonNull String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername(username);
+    }
+
 
     @Override
     public User findByUsername(String name) {
@@ -17,7 +36,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void save(User user) {
+    public boolean addUser(User user) {
+        User userFromDb = userService.findByUsername(user.getUsername());
+
+        if(userFromDb != null) {
+            return false;
+        }
+
+        user.setAccountStatus(true);
+        user.setRoles(Collections.singleton(Role.USER));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         userRepository.save(user);
+        return true;
     }
 }

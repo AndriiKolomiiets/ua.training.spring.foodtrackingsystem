@@ -1,5 +1,5 @@
-<#import "parts/common.ftl" as c>
-<#import 'parts/footer.ftl' as f>
+<#import "../parts/common.ftl" as c>
+<#import '../parts/footer.ftl' as f>
 <@c.page>
 
     <h2> List of Users</h2>

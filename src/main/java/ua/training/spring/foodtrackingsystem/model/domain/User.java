@@ -4,7 +4,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,10 +17,22 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
+@NotBlank(message = "Please, fill the user name field")
     private String username;
+@NotBlank(message = "Please, fill the password field")
     private String password;
+    @NotBlank(message = "Password confirmation can't be empty")
+    private String password2;
+@Email(message = "Email is not correct")
+    @NotBlank(message = "Please, fill the email field")
     private String email;
+
+   /* public void setAuthorities(List<Role> authorities) {
+        this.authorities = authorities;
+    }
+
+    private List<Role> authorities;
+*/
     private boolean accountStatus;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
@@ -90,6 +105,13 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
+    }
 
     public boolean isAccountStatus() {
         return accountStatus;

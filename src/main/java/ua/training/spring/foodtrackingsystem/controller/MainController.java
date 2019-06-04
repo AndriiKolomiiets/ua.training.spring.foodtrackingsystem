@@ -4,6 +4,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.training.spring.foodtrackingsystem.model.domain.User;
@@ -20,7 +21,7 @@ public class MainController {
         model.addAttribute("logout", logout != null);
        *//* user.setLogin("login");
         user.setPassword("pass");
-userServiceRepo.save(user);*//*
+userServiceRepo.addUser(user);*//*
         return "login";
     }
 
@@ -49,10 +50,10 @@ userServiceRepo.save(user);*//*
     }
 */
 
-    @GetMapping(value = "/admin")
+    /*@GetMapping(value = "/admin")
     public String adminHome() {
         return "admin";
-    }
+    }*/
 
   /*  @GetMapping(value = "/user")
     public String userHome() {
@@ -70,6 +71,7 @@ userServiceRepo.save(user);*//*
     @GetMapping(value = "/login")
     public String login(@RequestParam(value = "error", required = false) String error,
                         @RequestParam(value = "logout", required = false) String logout,
+                        /*BindingResult bindingResult,*/
                         Model model) {
         /*if (error != null && !error.isEmpty()) {
             model.addAttribute("message", "Something goes wrong...");

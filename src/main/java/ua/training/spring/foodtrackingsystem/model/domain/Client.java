@@ -1,17 +1,25 @@
 package ua.training.spring.foodtrackingsystem.model.domain;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.sql.Date;
 
 @Entity
-@Table (name = "clients"/*, joinC=@JoinColumn (name="user_id")*/)
+@Table (name = "clients")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator= "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
+    @NotBlank(message = "Please, fill the birth date")
     private Date birthDay;
+    @NotBlank(message = "Please, fill the weight field")
     private Integer weight;
+    @NotBlank(message = "Please, fill the height field")
     private Integer height;
+    @NotBlank(message = "Please, choose the lifestyle")
     private String lifeStyle;
 
     @OneToOne(fetch = FetchType.EAGER)
