@@ -28,12 +28,11 @@ public class AdminController {
         model.addAttribute("username", user.getUsername());
         model.addAttribute("roles","user");
 //todo: getAuthority
- /*       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+       /* Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
 
         model.addAttribute("username", user.getUsername());
-        model.addAttribute("roles", user.getAuthorities().stream().map(Role::getAuthority).collect(joining(",")));
-*/
+        model.addAttribute("roles", user.getAuthorities().stream().map(Role::getAuthority).collect(joining(",")));*/
         return "admin/userList";
     }
 

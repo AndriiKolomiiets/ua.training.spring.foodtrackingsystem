@@ -21,11 +21,14 @@ public class User implements UserDetails {
     private String username;
 @NotBlank(message = "Please, fill the password field")
     private String password;
-    @NotBlank(message = "Password confirmation can't be empty")
-    private String password2;
-@Email(message = "Email is not correct")
+    @Email(message = "Email is not correct")
     @NotBlank(message = "Please, fill the email field")
     private String email;
+    private boolean accountStatus;
+@Transient
+    @NotBlank(message = "Password confirmation can't be empty")
+    private String password2;
+
 
    /* public void setAuthorities(List<Role> authorities) {
         this.authorities = authorities;
@@ -33,7 +36,7 @@ public class User implements UserDetails {
 
     private List<Role> authorities;
 */
-    private boolean accountStatus;
+
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))

@@ -30,7 +30,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
     }
 //todo: roles containing works strangely
     protected String determineTargetUrl(Authentication authentication) {
-        String url = "/hello";
+        String url = "/user/main";
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         List<String> roles = new ArrayList<>();
@@ -39,9 +39,9 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
         }
 
         if (roles.contains("ADMIN")) {
-            url = "/admin";
+            url = "/admin/users";
         } else if (roles.contains("USER")) {
-            url = "/user";
+            url = "/user/main";
         }
         return url;
     }

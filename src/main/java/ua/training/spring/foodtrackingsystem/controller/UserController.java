@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping/*(value = "/userlist")*/
+    @GetMapping(value = "/meal-tracking")
     public String mealTracking(Model model) {
         /*Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
@@ -48,5 +48,13 @@ public class UserController {
 //todo: add Meal, get meal by user id
         model.addAttribute("meal", user);
         return "user/mealStatistic";
+    }
+
+    @GetMapping(value = "/main")
+    public String userMain(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User)authentication.getPrincipal();
+        model.addAttribute("username", user.getUsername());
+        return "user/main";
     }
 }
