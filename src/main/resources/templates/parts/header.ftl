@@ -1,5 +1,10 @@
 //Menu + Language + LogOut
 <#macro menu >
+ <form action="/logout" method="post">
+     <input type="hidden" name="_csrf" value="${_csrf.token}" />
+     <input type="submit" class="header_button" value="Sign Out"/>
+ </form>
+<br>
 <ul>
     <li><a href="${springMacroRequestContext.getContextPath()}main">Home</a></li>
     <li style="float:right"><a href="${springMacroRequestContext.getContextPath()}settings">User Settings</a></li>

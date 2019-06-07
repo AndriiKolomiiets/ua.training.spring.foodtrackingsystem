@@ -5,33 +5,54 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table (name = "clients")
+@Table(name = "clients")
 public class Client {
     @Id
-    @GeneratedValue(generator= "increment")
+    @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
     @NotBlank(message = "Please, fill the birth date")
-    private Date birthDay;
+    @Column(name = "birth_date")
+    private Date birthDate;
     @NotBlank(message = "Please, fill the weight field")
     private Integer weight;
     @NotBlank(message = "Please, fill the height field")
     private Integer height;
     @NotBlank(message = "Please, choose the lifestyle")
+    @Column(name = "life_style")
     private String lifeStyle;
+    @Column(name = "calories_norm")
+    private Integer caloriesNorm;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+   private List<ClientTrack> clientTrack = new ArrayList<>();
 
-    public Client(Date birthDay, Integer weight, Integer height, String lifeStyle, User user) {
-        this.birthDay = birthDay;
+    public Client(Date birthDate, Integer weight, Integer height, String lifeStyle, Integer caloriesNorm) {
+        this.birthDate = birthDate;
         this.weight = weight;
         this.height = height;
         this.lifeStyle = lifeStyle;
-        this.user = user;
+        this.caloriesNorm = caloriesNorm;
+    }
+
+    public List<ClientTrack> getClientTrack() {
+        return clientTrack;
+    }
+
+    public void setClientTrack(List<ClientTrack> clientTrack) {
+        this.clientTrack = clientTrack;
+    }
+
+    public Integer getCaloriesNorm() {
+        return caloriesNorm;
+    }
+
+    public void setCaloriesNorm(Integer caloriesNorm) {
+        this.caloriesNorm = caloriesNorm;
     }
 
     public Long getId() {
@@ -42,12 +63,12 @@ public class Client {
         this.id = id;
     }
 
-    public Date getBirthDay() {
-        return birthDay;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public Integer getWeight() {
@@ -73,14 +94,5 @@ public class Client {
     public void setLifeStyle(String lifeStyle) {
         this.lifeStyle = lifeStyle;
     }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
 
 }

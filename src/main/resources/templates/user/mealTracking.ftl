@@ -6,7 +6,6 @@
 
 <div>Meal Tracking</div>
 <br>
-    <@l.logout/>
     <@h.menu/>
 
     <@f.footer date="2019" project="Food Tracking System"/>

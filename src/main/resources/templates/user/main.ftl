@@ -6,7 +6,6 @@
 
 <div>Welcome to Food Tracking System!</div>
 <br>
-    <@l.logout/>
     <@h.menu/>
 
 <div> Always happy to see you, ${username}</div>
@@ -14,7 +13,7 @@
 
 
 <p>Click <a href="${springMacroRequestContext.getContextPath()}/hello">here</a> to see a greeting.</p>
-<p><a href="/login">LOGIN</a></p>
+<p><a class="header_button" href="/login">LOGIN</a></p>
 
     <@f.footer date="2019" project="Food Tracking System"/>
 </@c.page>

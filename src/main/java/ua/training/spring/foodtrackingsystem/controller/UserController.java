@@ -45,7 +45,7 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
 
-//todo: add Meal, get meal by user id
+//todo: add DayMeal, get meal by user id
         model.addAttribute("meal", user);
         return "user/mealStatistic";
     }

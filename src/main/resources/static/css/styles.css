@@ -15,13 +15,14 @@ table th, table td {
 }
 
 .footer {
+    box-sizing: border-box;
     color: aliceblue;
-    position: absolute;
+    position: fixed;
     background: #1b3c03;
+    margin:  0 0px;
     bottom: 0;
     width: 100%;
     height: 6rem; /* Footer height */
-    border: 1px solid #1b3c03;
 
 }
 
