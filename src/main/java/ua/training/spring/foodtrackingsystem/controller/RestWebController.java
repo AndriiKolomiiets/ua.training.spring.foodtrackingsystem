@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 import ua.training.spring.foodtrackingsystem.exceptions.NotFoundException;
 import ua.training.spring.foodtrackingsystem.model.domain.Client;
+import ua.training.spring.foodtrackingsystem.model.domain.DayMeal;
+import ua.training.spring.foodtrackingsystem.model.domain.Food;
 import ua.training.spring.foodtrackingsystem.model.domain.User;
+import ua.training.spring.foodtrackingsystem.model.services.AddMealService;
+import ua.training.spring.foodtrackingsystem.model.services.FindFoodService;
 import ua.training.spring.foodtrackingsystem.model.services.UserService;
 
 import java.util.List;
@@ -19,6 +23,10 @@ public class RestWebController {
     @Autowired
 //    UserRepository userRepository;
             UserService userService;
+    @Autowired
+    AddMealService addMealService;
+    @Autowired
+    FindFoodService findFoodService;
 
     @GetMapping(value = "/user/all")
     public Response getAllUsers() {
@@ -30,6 +38,13 @@ public class RestWebController {
     public Response getUserById(@PathVariable(required = true) long id) {
         User user = userService.findById(id);
         return new Response("200", user);
+    }
+
+    //todo: add Food Service, Food Repository
+    @GetMapping(value = "food")
+    public Response getFood(/*@PathVariable(required = true) long id*/) {
+        List<Food> foodList = findFoodService.getAllFoods();
+        return new Response("200", foodList);
     }
 
     @PostMapping(value = "user/client/{userId}")
@@ -51,6 +66,18 @@ public class RestWebController {
             return new Response("404", null);
         }
         return new Response("200", user);
+    }
+
+    @PostMapping(value = "/meal")
+    public Response addMeal(@RequestBody DayMeal meal) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        try {
+            addMealService.addMeal(user.getClient(), meal);
+        } catch (NotFoundException|NullPointerException e) {
+            return new Response("404", null);
+        }
+        return new Response("200", meal);
     }
 
     @DeleteMapping(value = "/user/{id}")

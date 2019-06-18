@@ -2,6 +2,7 @@
 <#import "parts/login.ftl" as l>
 <#import 'parts/footer.ftl' as f>
 <#import 'parts/header.ftl' as h>
+
 <@c.page>
 
 <div>Welcome to Food Tracking System!</div>
@@ -17,5 +18,4 @@
 <p><a href="/login">LOGIN</a></p>
 
     <@f.footer date="2019" project="Food Tracking System"/>
-    <p>${f.pack}</p>
 </@c.page>

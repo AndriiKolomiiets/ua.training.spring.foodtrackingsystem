@@ -29,6 +29,9 @@ public class Client {
     private Integer caloriesNorm;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<DayMeal> dayMeals = new ArrayList<>();
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
    private List<ClientTrack> clientTrack = new ArrayList<>();
 
     public Client(Date birthDate, Integer weight, Integer height, String lifeStyle, Integer caloriesNorm) {

@@ -29,17 +29,19 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(@Valid User user, BindingResult bindingResult, @RequestParam(value = "error", required = false) String error, Model model) {
-    /*    User userFromDb = userService.findByUsername(user.getUsername());
-        if(userFromDb != null) {
-            model.put("message", "User exist!");
+        User userFromDb = userService.findByUsername(user.getUsername());
+        if (userFromDb != null) {
+            model.addAttribute("message", "User exists!");
             return "registration";
         }
-        user.setAccountStatus(true);
-        user.setRoles(Collections.singleton(Role.USER));*/
-
+/*        user.setAccountStatus(true);
+        user.setRoles(Collections.singleton(Role.USER));
+userRepo*/
         if (user.getPassword() != null && !user.getPassword().equals(user.getPassword2())) {
             model.addAttribute("passwordError", "Passwords are different!");
         }
+
+
 
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = ControllerUtils.getErrors(bindingResult);
@@ -50,17 +52,10 @@ public class RegistrationController {
         }
 
         model.addAttribute("error", error != null);
-        if(!userService.addUser(user)) {
+        if (!userService.addUser(user)) {
             model.addAttribute("message", "User exist!");
             return "registration";
         }
-        return "redirect:/home";
-    }
-
-
-
-    @RequestMapping("/test")
-    public String test() {
-        return "test";
+        return "redirect:/user/foodTracking";
     }
 }

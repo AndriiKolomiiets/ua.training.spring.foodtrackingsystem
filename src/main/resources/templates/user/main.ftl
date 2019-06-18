@@ -13,7 +13,7 @@
 
 
 <p>Click <a href="${springMacroRequestContext.getContextPath()}/hello">here</a> to see a greeting.</p>
-<p><a class="header_button" href="/login">LOGIN</a></p>
+<p><a class="header_button" href="/logout">LOGOUT</a></p>
 
     <@f.footer date="2019" project="Food Tracking System"/>
 </@c.page>

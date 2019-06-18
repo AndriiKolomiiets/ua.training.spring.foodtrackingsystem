@@ -14,19 +14,25 @@
 
 </head>
 <body>
-
+    <#--<#include "security.ftl">-->
     <#nested >
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#locales").change(function () {
+            var selectedOption = $('#locales').val();
+            if (selectedOption != ''){
+                window.location.replace(window.location.origin + window.location.pathname + '?lang=' + selectedOption);
+            }
+        });
+    });
+</script>
 
-<#--<script type="application/json" src="/static/js/scripts.js"></script>
-<script src="/static/js/registerScript.js"></script>
-<script type="application/json" src="/static/js/scripts.js"></script>-->
 
 <link type="application/json" rel="script"
       href="<@spring.url '/static/js/scripts.js'/>"/>
 
-<#--<script type="type/javascript" src="/static/js/scripts.js">
-<script src="/static/js/scripts.js"></script>-->
+
 </body>
 </html>
 </#macro>

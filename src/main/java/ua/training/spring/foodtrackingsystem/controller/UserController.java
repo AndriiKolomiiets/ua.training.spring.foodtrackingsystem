@@ -19,18 +19,18 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping(value = "/meal-tracking")
-    public String mealTracking(Model model) {
+    @GetMapping(value = "/dayMeal")
+    public String dayMeal(Model model) {
         /*Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
 
         model.addAttribute("username", user.getUsername());
         model.addAttribute("roles","user");*/
 
-        return "user/mealTracking";
+        return "dayMeal";
     }
 
-    @GetMapping(value = "/settings")
+    @GetMapping(value = "/userSettings")
     public String userSettings(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
@@ -40,7 +40,16 @@ public class UserController {
         return "user/userSettings";
     }
 
-    @GetMapping(value = "/statistic")
+    @GetMapping(value = "/foodTracking")
+    public String foodTracking(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+//todo: add Client, all user info included in that table
+        model.addAttribute("user", user);
+        return "user/foodTracking";
+    }
+
+    @GetMapping(value = "/mealStatistic")
     public String userStatistic(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();

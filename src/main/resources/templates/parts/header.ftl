@@ -5,21 +5,22 @@
      <input type="submit" class="header_button" value="Sign Out"/>
  </form>
 <br>
+
 <ul>
-    <li><a href="${springMacroRequestContext.getContextPath()}main">Home</a></li>
-    <li style="float:right"><a href="${springMacroRequestContext.getContextPath()}settings">User Settings</a></li>
-    <li><a href="${springMacroRequestContext.getContextPath()}meal-tracking">Meal Tracking</a></li>
-    <li><a href="${springMacroRequestContext.getContextPath()}statistic">Statistic</a></li>
+    <li><a href="${springMacroRequestContext.getContextPath()}foodTracking">food.tracking.title</a></li>
+    <li style="float:right"><a href="${springMacroRequestContext.getContextPath()}userSettings">User Settings</a></li>
+    <li><a href="${springMacroRequestContext.getContextPath()}dayMeal">Day Meal</a></li>
+    <li><a href="${springMacroRequestContext.getContextPath()}mealStatistic">Statistic</a></li>
+    <li><a href="${springMacroRequestContext.getContextPath()}userManagement">User Management</a></li>
 </ul>
 <br>
+
+ <div class = "mr-2">
+     <select id="locales" class="language" >
+         <option value=""><#--${rc.getMessage("page.language")}--></option>
+         <option value="IE">EN</option>
+         <option value="UA">UA</option>
+     </select>
+ </div>
 </#macro>
-<#--
-<#macro list title items>
-  <p>${title?cap_first}:
-  <ul>
-    <#list items as x>
-      <li>${x?cap_first}
-    </#list>
-  </ul>
-</#macro>
-<@list items=["mouse", "elephant", "python"] title="Animals"/>-->
+

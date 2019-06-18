@@ -1,4 +1,3 @@
-
 <#import 'parts/common.ftl' as c>
 <#import 'parts/footer.ftl' as f>
 <#import "parts/login.ftl" as l>
@@ -16,7 +15,7 @@
                     <div class="alert alert-danger" role="alert">Invalid Username or Password!</div>
     </#if>
 <h1>Login page!</h1>
-<@l.login "/login"/>
+    <@l.login "/login"/>
 
 <p>Click <a href="${springMacroRequestContext.getContextPath()}/registration">here</a> to register.</p>
 

@@ -13,12 +13,14 @@ public class DayMeal {
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
 
-    @OneToOne (fetch = FetchType.EAGER)
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
     private Client client;
     @Column(name = "date_time")
     private Date dateTime;
 //todo: Might be a problem, relation might be a many to many!
     @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name = "food_id")
     private Food food;
     @Column(name = "number")
     private String number;

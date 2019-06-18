@@ -4,7 +4,7 @@
 <#import '../parts/header.ftl' as h>
 <@c.page>
 
-<div>Meal Tracking</div>
+<div>Meal Statistic</div>
 <br>
     <@h.menu/>
 

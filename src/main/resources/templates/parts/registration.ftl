@@ -1,6 +1,6 @@
 <#macro register path>
 
-    <form id="registrationForm" <#--action="${path}" method="post"-->>
+    <form id="registrationForm" action="${path}" method="post">
         <div id="postResultDiv" style="padding:20px 10px 20px 50px"></div>
         <div><label> Login :
             <input type="text" name="username" id="username" placeholder="Input your Login"
@@ -101,6 +101,7 @@
                 success: function (result) {
                     if (result.status === "200") {
                         alert("registered!")
+                        window.location = '/user/main';
                         /*$("#postResultDiv").html("<p style='background-color:#7FA7B0; color:white; padding:20px 20px 20px 20px'>" +
                                 "Post Successfully! <br>" +
                                 "---> Customer's Info: FirstName = " +
